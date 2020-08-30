@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-import AppBar from "@material-ui/core/AppBar"
-import ToolBar from "@material-ui/core/Toolbar"
-import useScrollTrigger from "@material-ui/core/useScrollTrigger"
-import { makeStyles } from "@material-ui/styles"
-import Tabs from "@material-ui/core/Tabs"
-import Tab from "@material-ui/core/Tab"
-import Button from "@material-ui/core/Button"
-import Menu from "@material-ui/core/Menu"
-import MenuItem from "@material-ui/core/MenuItem"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
-import { useTheme } from "@material-ui/core/styles"
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar'
+import ToolBar from '@material-ui/core/Toolbar'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
+import { makeStyles } from '@material-ui/styles'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import Button from '@material-ui/core/Button'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useTheme } from '@material-ui/core/styles'
 
-import logo from "../../assets/logo.svg"
+import logo from '../../assets/logo.svg'
 
-function ElevationScroll(props) {
+function ElevationScroll (props) {
   const { children } = props
 
   const trigger = useScrollTrigger({
@@ -29,77 +29,77 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: "3em",
-    [theme.breakpoints.down("md")]: {
-      marginBottom: "2em",
+    marginBottom: '3em',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '2em',
     },
-    [theme.breakpoints.down("xs")]: {
-      marginBottom: "1.25em",
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '1.25em',
     },
   },
   logo: {
-    height: "8em",
-    [theme.breakpoints.down("md")]: {
-      height: "7em",
+    height: '8em',
+    [theme.breakpoints.down('md')]: {
+      height: '7em',
     },
-    [theme.breakpoints.down("xs")]: {
-      height: "5.5em",
+    [theme.breakpoints.down('xs')]: {
+      height: '5.5em',
     },
   },
   logoContainer: {
-    padding: "0",
-    "&:hover": {
-      backgroundColor: "transparent",
+    padding: '0',
+    '&:hover': {
+      backgroundColor: 'transparent',
     },
   },
   tabContainer: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
   tab: {
     ...theme.typography.tab,
     minWidth: 10,
-    marginLeft: "25px",
+    marginLeft: '25px',
   },
   button: {
-    borderRadius: "50px",
-    margin: "0 25px 0 50px",
-    height: "45px",
+    borderRadius: '50px',
+    margin: '0 25px 0 50px',
+    height: '45px',
     ...theme.typography.estimate,
   },
   menu: {
     backgroundColor: theme.palette.common.blue,
-    color: "white",
-    borderRadius: "0px",
+    color: 'white',
+    borderRadius: '0px',
   },
   menuItem: {
     ...theme.typography.tab,
     opacity: 0.7,
-    "&:hover": {
+    '&:hover': {
       opacity: 1,
     },
   },
 }))
 
-export default function Header(props) {
+export default function Header () {
   const classes = useStyles()
   const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down("md")) //medium and below
+  const matches = useMediaQuery(theme.breakpoints.down('md')) // medium and below
   const [value, setValue] = useState(0)
   const [anchorEl, setAnchorEl] = useState(null)
   const [open, setOpen] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
 
+  // eslint-disable-next-line no-shadow
   const handleChange = (e, value) => {
     setValue(value)
   }
 
   const handleClick = (e) => {
-    console.log(e.currentTarget)
     setAnchorEl(e.currentTarget)
     setOpen(true)
   }
 
-  const handleClose = (e) => {
+  const handleClose = () => {
     setAnchorEl(null)
     setOpen(false)
   }
@@ -110,70 +110,70 @@ export default function Header(props) {
   }
   const menuOptions = [
     {
-      name: "Services",
-      link: "/services",
+      name: 'Services',
+      link: '/services',
     },
     {
-      name: "Custom Software Development",
-      link: "/customsoftware",
+      name: 'Custom Software Development',
+      link: '/customsoftware',
     },
     {
-      name: "Mobile App Development",
-      link: "/mobileapps",
+      name: 'Mobile App Development',
+      link: '/mobileapps',
     },
     {
-      name: "Websites Development",
-      link: "/websites",
+      name: 'Websites Development',
+      link: '/websites',
     },
   ]
 
   useEffect(() => {
     switch (window.location.pathname) {
-      case "/":
+      case '/':
         if (value !== 0) {
           setValue(0)
         }
         break
-      case "/services":
+      case '/services':
         if (value !== 1) {
           setValue(1)
           setSelectedIndex(0)
         }
         break
-      case "/customsoftware":
+      case '/customsoftware':
         if (value !== 1) {
           setValue(1)
           setSelectedIndex(1)
         }
         break
-      case "/mobileapps":
+      case '/mobileapps':
         if (value !== 1) {
           setValue(1)
           setSelectedIndex(2)
         }
         break
-      case "/websites":
+      case '/websites':
         if (value !== 1) {
           setValue(1)
           setSelectedIndex(3)
         }
         break
-      case "/revolution":
+      case '/revolution':
         if (value !== 2) {
           setValue(2)
         }
         break
-      case "/about":
+      case '/about':
         if (value !== 3) {
           setValue(3)
         }
         break
-      case "/contact":
+      case '/contact':
         if (value !== 4) {
           setValue(4)
         }
         break
-      case "/estimate":
+      case '/estimate':
         if (value !== 5) {
           setValue(5)
         }
@@ -193,8 +193,8 @@ export default function Header(props) {
       >
         <Tab className={classes.tab} component={Link} to="/" label="Home" />
         <Tab
-          aria-owns={anchorEl ? "simple-menu" : undefined}
-          aria-haspopup={anchorEl ? "true" : undefined}
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          aria-haspopup={anchorEl ? 'true' : undefined}
           className={classes.tab}
           component={Link}
           onMouseOver={handleClick}
@@ -238,8 +238,7 @@ export default function Header(props) {
         MenuListProps={{ onMouseLeave: handleClose }}
         elevation={0}
       >
-        {menuOptions.map((option, index) => {
-          return (
+        {menuOptions.map((option, index) => (
             <MenuItem
               key={index}
               component={Link}
@@ -254,8 +253,7 @@ export default function Header(props) {
             >
               {option.name}
             </MenuItem>
-          )
-        })}
+        ))}
       </Menu>
     </React.Fragment>
   )
