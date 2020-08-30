@@ -276,7 +276,6 @@ export default function Header () {
         </AppBar>
       </ElevationScroll>
       <div className={classes.toolbarMargin} />
-      Hi
     </React.Fragment>
   )
 }
